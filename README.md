@@ -8,19 +8,25 @@ To create a new project from scratch:
 1. Create a top level project directory.  Add an empty ebin/ directory.
 (N.B. also create a dummy file to commit to git)
 2. Create a new heroku instance:
-    ```
-    $ git init
-    $ heroku create --stack cedar
-    $ heroku config:add BUILDPACK_URL=http://github.com/heroku/heroku-buildpack-erlang.git
-    ```
+
+```
+git init
+heroku create --stack cedar
+heroku config:add BUILDPACK_URL=http://github.com/heroku/heroku-buildpack-erlang.git
+```
+
 3. Add ChicagoBoss as git submodule (also repeat for cb_admin if required)
-    ```
-    $ git submodule add https://github.com/evanmiller/ChicagoBoss.git ChicagoBoss
-    ```
+
+```
+git submodule add https://github.com/evanmiller/ChicagoBoss.git ChicagoBoss
+```
+
 4. Create app
-    ```
-    $ cd ChicagoBoss; make; make app PROJECT=myapp
-    ```
+
+```
+cd ChicagoBoss; make; make app PROJECT=myapp
+```
+
 5. Add Procfile, run.sh from this project - edit project name in run.sh
 
 6. Edit myapp/init.sh - add the following sections: (running erl with the -sname param causes heroku startup to fail)
